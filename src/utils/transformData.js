@@ -53,21 +53,55 @@ function getProductHashVal(productsHash) {
 
 
 function calcRevenue(products) {
+
    return products.map( (prod) => {
-      let denomScale = Math.pow(10, prod.vendor_price.scale)
+      const denomScale = Math.pow(10, prod.vendor_price.scale)
+      const value = prod.order_count * (prod.vendor_price.value / denomScale )
+ 
       return {
          name: prod.name,
-         revenue: prod.order_count * (prod.vendor_price.value / denomScale )
+         revenue: value,
+         currency: prod.vendor_price.code
       }
    })
 }
 
-function sortByRevenue(products) {
+function sortByGreatestRevenue(products) {
    return products.sort( (a,b) => {
       return b.revenue - a.revenue
    })
 }
 
+// NOTES: 
+// - `toFixed` has some edge cases to watch out for:
+//
+//    (1000000000000000000000).toFixed(2)
+//    => '1e+21'
+//
+//   Assume `prod.revenue` will strictly be less than 9999999999999999. 
+//
+//    (9999999999999999).toFixed(2)
+//    => '10000000000000000.00'
+//
+//    (9999999999999998).toFixed(2)
+//    => '9999999999999998.00'
+//
+//
+// - `currencyMap` only handles USD for now.
+//
+
+function convertRevenueForDisplay(products) {
+   const currencyMap = {
+      'USD': '$'
+   }
+
+   return products.map( (prod) => {
+      return {
+         name: prod.name,
+         revenue: `${currencyMap[prod.currency]}${prod.revenue.toFixed(2)}`,
+      }
+   })
+}
 
 export default function transformData(data) {
    return pipe(data,
@@ -77,7 +111,8 @@ export default function transformData(data) {
       mergeOrderCounts,
       getProductHashVal,
       calcRevenue,
-      sortByRevenue
+      sortByGreatestRevenue,
+      convertRevenueForDisplay
     );
 };
 
