@@ -5,24 +5,6 @@
   color: #000000;
 }
 
-.circle{
-  float: left;
-
-  width:28px;
-  height:28px;
-
-  margin-top:16px;
-  border-radius:14px;
-
-  line-height:28px;
-  text-align:center;
-
-  font-size:18px;
-  color:#fff;
-  background:#90d243;
-
-}
-
 .productList {
   list-style-type: none;
 
@@ -32,37 +14,3 @@
   padding-left: 0;
 }
 
-.listItem {
-  min-height:55px;
-}
-
-.productInfo {
-  display: inline-block;
-  width:80%;
-
-  margin-left: 1em;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  border-top: 1px solid gray;
-
-  white-space: pre-wrap;
-}
-
-.productName {
-  margin:0;
-
-  font-size:14px;
-  font-family: 'Roboto Lt', sans-serif;
-  font-weight: normal;
-  color: #000000;
-}
-
-.productRevenue {
-  margin:0;
-
-  font-size:10px;
-  font-family: 'Roboto Lt' sans-serif;
-  color: #000000;
-  line-height:14px;
-  color: #CCCCCC;
-}

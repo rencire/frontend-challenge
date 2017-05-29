@@ -1,4 +1,5 @@
-import React, {createElement as h } from 'react'
+import React from 'react'
+import Product from './product.component.js'
 import Styles from './top_sales.scss'
 
 class TopSalesList extends React.Component  {
@@ -19,24 +20,6 @@ class TopSalesList extends React.Component  {
         )
     }
 };
-
-const Product = (props) => {
-    return (
-        <li className={Styles.listItem}>
-            <div className={Styles.circle}>
-                {props.position}
-            </div>
-            <div className={Styles.productInfo}>
-                <p className={Styles.productName}>
-                    {props.name}
-                </p>
-                <p className={Styles.productRevenue}>
-                    {props.revenue}
-                </p>
-            </div>
-        </li>
-    )
-}
 
 
 export default TopSalesList;
