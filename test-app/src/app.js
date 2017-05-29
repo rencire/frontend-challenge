@@ -7,9 +7,9 @@ import request from 'request';
 request.get('http://localhost:3000/PurchaseOrders', function (error, response, body) {
   console.log('body:', body); 
 
-  const orders = transformData(body);
+  const products = transformData(body);
   
-  ReactDOM.render(<TopSalesList orders={orders}/>, document.getElementById('app'));
+  ReactDOM.render(<TopSalesList products={products}/>, document.getElementById('app'));
 });
 
 

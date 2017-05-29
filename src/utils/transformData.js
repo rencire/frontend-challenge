@@ -1,10 +1,16 @@
 //feel free to use lodash; it provides alot of type methods that are native to other languages
-import {flatten, mergeWith} from 'lodash'
+import {flatten, mergeWith, startCase, toLower} from 'lodash'
 
 function pipe(data, ...fns) {
    return fns.reduce((res, fn) => {
         return fn(res)
    }, data)
+}
+
+// https://stackoverflow.com/questions/4878756/how-to-capitalize-first-letter-of-each-word-like-a-2-word-city
+function toTitleCase(str){
+   return str
+    // return _.startCase(_.toLower(str));
 }
 
 
@@ -90,14 +96,15 @@ function sortByGreatestRevenue(products) {
 // - `currencyMap` only handles USD for now.
 //
 
-function convertRevenueForDisplay(products) {
+function convertForDisplay(products) {
    const currencyMap = {
       'USD': '$'
    }
 
-   return products.map( (prod) => {
+   return products.map( (prod, index) => {
       return {
-         name: prod.name,
+         position: index + 1,
+         name: toTitleCase(prod.name),
          revenue: `${currencyMap[prod.currency]}${prod.revenue.toFixed(2)}`,
       }
    })
@@ -112,7 +119,7 @@ export default function transformData(data) {
       getProductHashVal,
       calcRevenue,
       sortByGreatestRevenue,
-      convertRevenueForDisplay
+      convertForDisplay
     );
 };
 
