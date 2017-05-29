@@ -1,5 +1,5 @@
 //feel free to use lodash; it provides alot of type methods that are native to other languages
-import {flatten, mergeWith, startCase, toLower} from 'lodash'
+import {flatten, mergeWith} from 'lodash'
 
 function pipe(data, ...fns) {
    return fns.reduce((res, fn) => {
@@ -7,10 +7,11 @@ function pipe(data, ...fns) {
    }, data)
 }
 
+// NOTE:
+// - Not going to deal with formatting `product.name` for now.  Leave stub function here for future.
 // https://stackoverflow.com/questions/4878756/how-to-capitalize-first-letter-of-each-word-like-a-2-word-city
 function toTitleCase(str){
    return str
-    // return _.startCase(_.toLower(str));
 }
 
 
