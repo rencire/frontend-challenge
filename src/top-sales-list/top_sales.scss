@@ -1,11 +1,10 @@
-//write styles here
-
 .title {
   font-family: 'Roboto Lt', sans-serif;
   font-size: 16px;
   font-weight: normal;
   color: #000000;
 }
+
 .circle{
   float: left;
 
@@ -26,20 +25,27 @@
 
 .productList {
   list-style-type: none;
+
+  margin-top:2em;
+  margin-left:1em;
+  margin-right:1em;
   padding-left: 0;
 }
 
 .listItem {
- min-height:55px;
+  min-height:55px;
 }
 
 .productInfo {
   display: inline-block;
-  white-space: pre-wrap;
-  padding-top: 7px;
   width:80%;
+
   margin-left: 1em;
+  padding-top: 7px;
+  padding-bottom: 7px;
   border-top: 1px solid gray;
+
+  white-space: pre-wrap;
 }
 
 .productName {
